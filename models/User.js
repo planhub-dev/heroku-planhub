@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     email: { type: String, unique: true },
-    userAgents: [],
+    userDatas: [],
 }, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);
