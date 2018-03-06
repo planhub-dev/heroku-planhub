@@ -33,6 +33,7 @@ app.use(lusca.xssProtection(true));
 
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
+app.get('/test/email', emailController.getTestPage);
 app.get('/email/logo', emailController.setEmail);
 
 app.use(errorHandler());
