@@ -1,0 +1,31 @@
+{
+  "name": "heroku-planhub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/planhub-dev/heroku-planhub.git"
+  },
+  "author": "Thomas Morrier-Bompoint",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/planhub-dev/heroku-planhub/issues"
+  },
+  "homepage": "https://github.com/planhub-dev/heroku-planhub#readme",
+  "dependencies": {
+    "chalk": "^2.3.2",
+    "compression": "^1.7.2",
+    "connect-mongo": "^2.0.1",
+    "dotenv": "^5.0.1",
+    "errorhandler": "^1.5.0",
+    "express": "^4.16.2",
+    "express-status-monitor": "^1.0.1",
+    "lusca": "^1.5.2",
+    "mongoose": "^5.0.9",
+    "morgan": "^1.9.0"
+  }
+}
