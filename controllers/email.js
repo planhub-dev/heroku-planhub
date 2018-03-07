@@ -7,6 +7,15 @@ exports.getTestPage = (req, res) => {
     return res.sendFile(resFileSrc);
 };
 
+exports.getUsersEmail = (req, res) => {
+    User.find({}, (err, users) => {
+        if (err) {
+            return res.send('ERROR WITH DB');
+        }
+        return res.send(users);
+    });
+};
+
 exports.setEmail = (req, res) => {
     //  TODO Validation required
     const resFileSrc = path.join(__dirname, '../public/static/email-logo.png');
@@ -15,31 +24,27 @@ exports.setEmail = (req, res) => {
     const email = req.query.email || 'N/A';
     const value = req.headers['user-agent'] || 'N/A';
     const time = Date.now();
-    const userData = { category, time, value, ip };
 
-    if (email && value) {
-        const user = new User({
-            email,
-            userDatas: [ userData ],
-        });
-        User.findOne({ email }, (err, existingUser) => {
-            if (err) { return res.sendFile(resFileSrc); }
-            if (existingUser) {  //  TODO Add user-agent to that user may be point to another function
-                const userDatas = existingUser.userDatas;
-                userDatas.push(userData);
-                existingUser.set({ userDatas });
-                existingUser.save((err) => {
-                    if (err) { return res.sendFile(resFileSrc); }
-                    return res.sendFile(resFileSrc);
-                });
-            } else {
-                user.save((err) => {
-                    if (err) { return res.sendFile(resFileSrc); }
-                    return res.sendFile(resFileSrc);
-                });
-            }
-        });
-    } else {
-        return res.sendFile(resFileSrc);
-    }
+    const userData = { category, time, value, ip };
+    const user = new User({
+        email,
+        userDatas: [ userData ],
+    });
+    User.findOne({ email }, (err, existingUser) => {
+        if (err) { return res.sendFile(resFileSrc); }
+        if (existingUser) {  //  TODO Add user-agent to that user may be point to another function
+            const userDatas = existingUser.userDatas;
+            userDatas.push(userData);
+            existingUser.set({ userDatas });
+            existingUser.save((err) => {
+                if (err) { return res.sendFile(resFileSrc); }
+                return res.sendFile(resFileSrc);
+            });
+        } else {
+            user.save((err) => {
+                if (err) { return res.sendFile(resFileSrc); }
+                return res.sendFile(resFileSrc);
+            });
+        }
+    });
 };

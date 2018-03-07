@@ -7,7 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="http://localhost:5000/email/logo?email=test@test.com&category=alert" alt="for localhost">
-    <img src="https://planhub-dev.herokuapp.com/email/logo?email=test@test.com&category=alert" alt="for heroku">
+    <h2>Pour voir les données de la DB</h2>
+    <a href="/emails">Get all e-mail (JSON)</a>
+    <h2>TODO</h2>
+    <p>
+        Revoir l'image, les noms des données, le routing (user id a la place de email, pixel a la place de logo...)<br><br>
+        Encrypter le email, exemple de url pour l'image:<br><br>
+        https://planhub-dev.herokuapp.com/email/logo?email={Encrypted}&category={Category}<br><br>
+        Category: alert-subscribe / alert-open-email / issues / others
+    </p>
+    <img src="http://localhost:5000/email/logo?email=test1@test.com&category=alert" alt="for localhost">
+    <img src="https://planhub-dev.herokuapp.com/email/logo?email=test1@test.com&category=alert" alt="for heroku">
 </body>
 </html>
