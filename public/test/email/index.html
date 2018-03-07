@@ -17,6 +17,8 @@
         Category: alert-subscribe / alert-open-email / issues / others
     </p>
     <h2>DATA in navigator</h2>
+    <h3>Utiliser la taille de l'écrant pour iPhone pour savoir si le user a changé son cell</h3>
+    <h4>Update User model en mettan navigator data avec la date dans une array différente de userDatas?</h4>
     <script>
         document.body.innerHTML += 'navigator.appVersion:<br>' + navigator.appVersion + '<br><br>'+
                                     'navigator.connection.downlink:<br>' + navigator.connection.downlink + '<br><br>'+
@@ -27,9 +29,11 @@
                                     'navigator.hardwareConcurrency:<br>' + navigator.hardwareConcurrency + '<br><br>'+
                                     'navigator.maxTouchPoints:<br>' + navigator.maxTouchPoints + '<br><br>'+
                                     'navigator.vendor:<br>' + navigator.vendor + '<br><br>'+
-                                    'navigator.vendorSub:<br>' + navigator.vendorSub + '<br><br>'+
-                                    'window.frames.innerHeight:<br>' + window.frames.innerHeight + '<br><br>'+
-                                    'window.frames.innerWidth:<br>' + window.frames.innerWidth + '<br><br>';
+                                    'navigator.vendorSub:<br>' + navigator.vendorSub + '<br><br>';
+        if (window && window.frames) {
+            document.body.innerHTML +=  'window.frames.innerHeight:<br>' + window.frames.innerHeight + '<br><br>'+
+                                        'window.frames.innerWidth:<br>' + window.frames.innerWidth + '<br><br>';
+        }
     </script>
     <img src="http://localhost:5000/email/logo?email=test1@test.com&category=alert" alt="for localhost">
     <img src="https://planhub-dev.herokuapp.com/email/logo?email=test1@test.com&category=alert" alt="for heroku">
