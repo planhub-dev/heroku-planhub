@@ -16,6 +16,21 @@
         https://planhub-dev.herokuapp.com/email/logo?email={Encrypted}&category={Category}<br><br>
         Category: alert-subscribe / alert-open-email / issues / others
     </p>
+    <h2>DATA in navigator</h2>
+    <script>
+        document.body.innerHTML += 'navigator.appVersion:<br>' + navigator.appVersion + '<br><br>'+
+                                    'navigator.connection.downlink:<br>' + navigator.connection.downlink + '<br><br>'+
+                                    'navigator.connection.effectiveType:<br>' + navigator.connection.effectiveType + '<br><br>'+
+                                    'navigator.deviceMemory:<br>' + navigator.deviceMemory + '<br><br>'+
+                                    'navigator.userAgent:<br>' + navigator.userAgent + '<br><br>'+
+                                    'navigator.platform:<br>' + navigator.platform + '<br><br>'+
+                                    'navigator.hardwareConcurrency:<br>' + navigator.hardwareConcurrency + '<br><br>'+
+                                    'navigator.maxTouchPoints:<br>' + navigator.maxTouchPoints + '<br><br>'+
+                                    'navigator.vendor:<br>' + navigator.vendor + '<br><br>'+
+                                    'navigator.vendorSub:<br>' + navigator.vendorSub + '<br><br>'+
+                                    'window.frames.innerHeight:<br>' + window.frames.innerHeight + '<br><br>'+
+                                    'window.frames.innerWidth:<br>' + window.frames.innerWidth + '<br><br>';
+    </script>
     <img src="http://localhost:5000/email/logo?email=test1@test.com&category=alert" alt="for localhost">
     <img src="https://planhub-dev.herokuapp.com/email/logo?email=test1@test.com&category=alert" alt="for heroku">
 </body>
