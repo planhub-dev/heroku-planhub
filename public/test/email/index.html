@@ -13,7 +13,7 @@
     <p>
         Revoir l'image, les noms des données, le routing (user id a la place de email, pixel a la place de logo...)<br><br>
         Encrypter le email, exemple de url pour l'image:<br><br>
-        https://planhub-dev.herokuapp.com/email/logo?email={Encrypted}&category={Category}<br><br>
+        https://planhub-dev.herokuapp.com/pixel?id={Encrypted}&category={Category}&data={}<br><br>
         Category: alert-subscribe / alert-open-email / issues / others
     </p>
     <h2>DATA in navigator</h2>
@@ -35,7 +35,7 @@
                                         'window.frames.innerWidth:<br>' + window.frames.innerWidth + '<br><br>';
         }
     </script>
-    <img src="http://localhost:5000/email/logo?email=test1@test.com&category=alert" alt="for localhost">
-    <img src="https://planhub-dev.herokuapp.com/email/logo?email=test1@test.com&category=alert" alt="for heroku">
+    <img src="http://localhost:5000/pixel?id=test1@test.com&category=alert&data=data-test" alt="for localhost">
+    <img src="https://planhub-dev.herokuapp.com/pixel?id=test1@test.com&category=alert&data=data-test" alt="for heroku">
 </body>
 </html>

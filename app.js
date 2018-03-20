@@ -9,12 +9,14 @@ const path = require('path');
 const mongoose = require('mongoose');
 const expressStatusMonitor = require('express-status-monitor');
 
-const emailController = require('./controllers/email');
+const pixelController = require('./controllers/pixel');
 
 const app = express();
 const server = require('http').Server(app);
 
-dotenv.load({ path: '.env.dev' });
+if (app.get('env') === 'development') {
+    dotenv.load({ path: '.env.dev' });
+}
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGOLAB_URI);
@@ -33,9 +35,11 @@ app.use(lusca.xssProtection(true));
 
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
-app.get('/test/email', emailController.getTestPage);
-app.get('/emails', emailController.getUsersEmail);
-app.get('/email/logo', emailController.setEmail);
+app.get('/pixel', pixelController.setEmailPixel);
+
+app.get('/test', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public/test/email/index.html'));
+});
 
 app.use(errorHandler());
 
