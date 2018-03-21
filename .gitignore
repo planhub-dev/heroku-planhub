@@ -1,4 +1,6 @@
 .env.dev
+.env.prod
+nodesource_setup.sh
 
 # Logs
 logs
