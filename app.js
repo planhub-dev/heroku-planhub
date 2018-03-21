@@ -16,6 +16,8 @@ const server = require('http').Server(app);
 
 if (app.get('env') === 'development') {
     dotenv.load({ path: '.env.dev' });
+} else {
+    dotenv.load({ path: '.env.prod' });
 }
 
 mongoose.Promise = global.Promise;
