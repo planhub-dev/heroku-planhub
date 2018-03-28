@@ -1,12 +1,12 @@
 const express = require('express');
-const compression = require('compression');
 const logger = require('morgan');
-const chalk = require('chalk');
-const errorHandler = require('errorhandler');
-const lusca = require('lusca');
-const dotenv = require('dotenv');
 const path = require('path');
+const lusca = require('lusca');
+const chalk = require('chalk');
+const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const compression = require('compression');
+const errorHandler = require('errorhandler');
 const expressStatusMonitor = require('express-status-monitor');
 
 const pixelController = require('./controllers/pixel');
@@ -32,18 +32,30 @@ app.use(expressStatusMonitor());
 app.use(compression());
 app.use(logger('dev'));
 
-app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
 
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
+app.use(errorHandler());
+
 app.get('/pixel', pixelController.setEmailPixel);
 
-app.get('/test', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public/test/email/index.html'));
+app.get('/server/test', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/test/email/index.html'));
 });
 
-app.use(errorHandler());
+app.get('/server/errors', (req, res) => {
+    res.send(errorLogs);
+});
+
+
+let errorLogs = [];
+process.on('uncaughtException', (er) => {
+    if (errorLogs.length == 2000) {
+        process.exit(1);
+        errorLogs.push({er, stack: er.stack});
+    }
+});
 
 const SERVER_PORT = 5000;
 server.listen(process.env.PORT || SERVER_PORT, () => {
